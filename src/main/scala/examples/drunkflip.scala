@@ -7,6 +7,8 @@ object drunkflip extends App {
   case object Flip extends Op[Boolean]
   case class Raise[A](msg: String) extends Op[A]
 
+
+
   def collect[R] : Eff[R] => Eff[List[R]] = handle {
     case Flip -> resume => for {
       ts <- collect { resume(true) }

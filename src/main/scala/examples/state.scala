@@ -78,10 +78,10 @@ object state extends App {
       r <- getN(n - 1)
     } yield x + r
 
-    assert { run { collect { for {
+  assert { run { collect { for {
     r <- always42 { ex }
     _ <- !Put(r)
-  } yield() } } == List(43, 43, 84) }
+  } yield () } } == List(43, 43, 84) }
 
   assert { run { state(1) { ex } } == 3 }
 
